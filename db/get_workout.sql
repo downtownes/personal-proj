@@ -1,0 +1,1 @@
+SELECT (sunday, monday, tuesday, wednesday, thursday, friday, saturday) FROM muscle;

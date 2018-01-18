@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
+
+
+.home {
+    display: block;
+    background: #ffffff;
+}
+
+h1 {
+    margin-left: 580px;
+    color: #232b2b;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.middle {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+}
+
+.middle-icon {
+    width: 260px;
+    height: 260px;
+    background: #ffffff;
+    box-shadow: 5px 5px 5px 0 #232b2b;
+}
+
+p {
+    margin: 100px 40px 0 40px;
+    color: #232b2b;
+}

@@ -1,0 +1,3 @@
+INSERT INTO fat
+(sunday, monday, tuesday, wednesday, thursday, friday, saturday)
+VALUES ('ACTIVE REST DAY', 'QUADS AND BICEPS', 'ACTIVE REST DAY', 'CHEST AND BACK', 'ACTIVE REST DAY', 'HAMSTRINGS, SHOULDERS, AND TRICEPS', 'ACTIVE REST DAY')
