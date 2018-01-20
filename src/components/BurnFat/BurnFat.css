@@ -1,6 +1,12 @@
 .burn-fat {
     width: 100%;
-    height: 200px;
-    background: black;
-    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: spac;
+}
+
+.burn-table {
+    width: 90%;
+    background-color: #017074;
+    border-collapse: collapse;
 }

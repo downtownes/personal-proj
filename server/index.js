@@ -13,6 +13,7 @@ massive(process.env.CONNECTION_STRING).then(db => {
 
 
 app.get('/api/muscle', controller.getWorkout);
+app.get('/api/fatburn', controller.getWorkout)
 
 
 

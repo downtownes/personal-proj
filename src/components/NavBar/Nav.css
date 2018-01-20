@@ -12,14 +12,15 @@
 
 .links {
     text-decoration: none;
-    color: #ffffff;
+    color: #017074;
     font-family: 'Open Sans', sans-serif;
+    animation: pulse;
 }
 
 .login-link {
     margin-right: 100px;
     margin-left: 100px;
-    color: #ffffff;
+    color: #017074;
     font-family: 'Open Sans', sans-serif;
 }
 
