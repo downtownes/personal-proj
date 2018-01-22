@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './BurnFat.css';
 
 
@@ -7,25 +8,29 @@ export default class BurnFat extends Component {
     constructor() {
         super();
         this.state = {
-            burnWorkout: []
+            burnWorkout: [],
+            week: []
         }
     }
 
     componentDidMount() {
-        axios.get('/api/fatburn').then(res => {
-            this.setState({ burnWorkout: res.data })
+        axios.all([axios.get('/api/fatburn'), axios.get('/api/week')]).then(res => {
+            this.setState({
+                burnWorkout: res[0].data,
+                week: res[1].data
+            })
         })
     }
     render() {
         let loseWeight = this.state.burnWorkout.map(week => {
             return <tr>
-                <td>{week.sunday}</td>
-                <td>{week.monday}</td>
-                <td>{week.tuesday}</td>
-                <td>{week.wednesday}</td>
-                <td>{week.thursday}</td>
-                <td>{week.friday}</td>
-                <td>{week.saturday}</td>
+                <td><Link to="/workout/week">{week.sunday}</Link></td>
+                <td><Link to="/workout/week">{week.monday}</Link></td>
+                <td><Link to="/workout/week">{week.tuesday}</Link></td>
+                <td><Link to="/workout/week">{week.wednesday}</Link></td>
+                <td><Link to="/workout/week">{week.thursday}</Link></td>
+                <td><Link to="/workout/week">{week.friday}</Link></td>
+                <td><Link to="/workout/week">{week.saturday}</Link></td>
             </tr>
         })
         return (
@@ -44,6 +49,7 @@ export default class BurnFat extends Component {
                             <th>Saturday</th>
                         </tr>
 
+                        {loseWeight}
                         {loseWeight}
                         {loseWeight}
                         {loseWeight}

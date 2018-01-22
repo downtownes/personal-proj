@@ -5,6 +5,7 @@ import Workouts from './components/Workouts/Workouts';
 import About from './components/About/About';
 import MuscleWorkout from './components/MuscleWorkout/MuscleWorkout';
 import BurnFat from './components/BurnFat/BurnFat';
+import Week from './components/Week/Week';
 
 
 export default (
@@ -14,6 +15,7 @@ export default (
             <Workouts>
                 <Switch>
                     <Route path="/workouts/muscle" component={MuscleWorkout} />
+                    <Route path="/workouts/week" component={Week}/>
                     <Route path="/workouts/fat" component={BurnFat} />
                 </Switch>
             </Workouts>

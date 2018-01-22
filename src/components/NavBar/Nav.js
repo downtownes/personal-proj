@@ -14,7 +14,9 @@ export default class Nav extends Component {
                     <Link to="/workouts" className="links"><h4 >Workouts</h4></Link>
                     <Link to="/about" className="links"><h4>About</h4></Link>
                     <div className="login-link">
+                    <a href={process.env.REACT_APP_LOGIN}>
                         <h4>Login</h4>
+                    </a>
                     </div>
                 </div>
             </div>

@@ -1,34 +1,38 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import {Link} from 'react-router-dom';
 import './MuscleWorkout.css';
 
 export default class MuscleWorkout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            workout: []
+            workout: [],
+            week: []
         }
     }
 
 
     componentDidMount() {
-        axios.get('/api/muscle').then(res => {
+        axios.all([axios.get('/api/muscle'), axios.get('/api/week')]).then(res => {
             console.log(res.data)
-            this.setState({ workout: res.data })
+            this.setState({ 
+                workout: res[0].data,
+                week: res[1].data
+            })
         })
     }
 
     render() {
         let muscWorkout = this.state.workout.map(week => {
             return <tr>
-                <td>{week.sunday}</td>
-                <td>{week.monday}</td>
-                <td>{week.tuesday}</td>
-                <td>{week.wednesday}</td>
-                <td>{week.thursday}</td>
-                <td>{week.friday}</td>
-                <td>{week.saturday}</td>
+                <td><Link to="/workout/week">{week.sunday}</Link></td>
+                <td><Link to="/workout/week">{week.monday}</Link></td>
+                <td><Link to="/workout/week">{week.tuesday}</Link></td>
+                <td><Link to="/workout/week">{week.wednesday}</Link></td>
+                <td><Link to="/workout/week">{week.thursday}</Link></td>
+                <td><Link to="/workout/week">{week.friday}</Link></td>
+                <td><Link to="/workout/week">{week.saturday}</Link></td>
             </tr>
         });
         return (
@@ -56,7 +60,7 @@ export default class MuscleWorkout extends Component {
                         {muscWorkout}
                         {muscWorkout}
                         {muscWorkout}
-                        {muscWorkout}
+                        {console.log(this.state.week)}
                     </tbody>
                 </table>
 
