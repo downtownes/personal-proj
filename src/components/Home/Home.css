@@ -3,7 +3,12 @@
 
 .home {
     display: block;
-    background: #ffffff;
+    background: #f0eeee;
+}
+
+.title-div {
+    display: flex;
+    justify-content: space-around;
 }
 
 h1 {
@@ -24,7 +29,7 @@ h1 {
     width: 260px;
     height: 260px;
     background: #ffffff;
-    box-shadow: 5px 5px 5px 0 #232b2b;
+    box-shadow: 5px 5px 5px 0 #831919;
 }
 
 p {

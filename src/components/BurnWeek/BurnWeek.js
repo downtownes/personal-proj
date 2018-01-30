@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './Week.css';
+import './BurnWeek.css';
 
 export default class Week extends Component {
     constructor(props) {
@@ -12,7 +12,7 @@ export default class Week extends Component {
     }
 
     componentDidMount() {
-        axios.get('/api/week').then(res => {
+        axios.get('/api/burnweek').then(res => {
             console.log(res.data)
             this.setState({
                 week: res.data

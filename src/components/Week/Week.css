@@ -1,0 +1,44 @@
+.week {
+    width: 100%;
+    height: 200px;
+}
+
+.week-table{
+    width: 90%;
+    border-radius: 3%;
+    background: #ffffff;
+    font-family: 'Open Sans', sans-serif;
+    border: 1px solid black;
+    border-spacing: 5px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+th {
+    font-size: 28px;
+    background: #232b2b;
+    color: white;
+    padding: 20px;
+}
+
+td {
+    padding: 20px;
+}
+
+.pic-div {
+    width: 100%;
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h4 {
+    margin: 0;
+}
+
+th {
+    color: #ffffff;
+}

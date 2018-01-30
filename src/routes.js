@@ -6,6 +6,8 @@ import About from './components/About/About';
 import MuscleWorkout from './components/MuscleWorkout/MuscleWorkout';
 import BurnFat from './components/BurnFat/BurnFat';
 import Week from './components/Week/Week';
+import Profile from './components/Profile/Profile';
+import BurnWeek from './components/BurnWeek/BurnWeek'
 
 
 export default (
@@ -15,11 +17,13 @@ export default (
             <Workouts>
                 <Switch>
                     <Route path="/workouts/muscle" component={MuscleWorkout} />
-                    <Route path="/workouts/week" component={Week}/>
                     <Route path="/workouts/fat" component={BurnFat} />
                 </Switch>
             </Workouts>
         )} />
+        <Route path="/week/:workout_id" component={Week}/>
+        <Route path="/burnweek/:workout_id" component={BurnWeek}/>
+        <Route path="/profile" component={Profile}/>
         <Route path="/about" component={About} />
     </Switch>
 )

@@ -8,36 +8,45 @@
     align-items: center;
 }
 
-.workout-table {
-    width: 90%;
-    border-radius: 3%;
-    background: #017074;
-    font-family: 'Open Sans', sans-serif;
-    border-collapse: collapse;
-    border: 1px solid white;
-    border-spacing: 5px;
-    margin-bottom: 10px;
-}
-h1 {
+.build-title {
     margin-top: 140px;
+}
+
+table {
+    border-collapse: separate !important;
+    border-spacing: 0;
+    width: 90%;
+    margin-bottom: 50px;
+}
+.workout-table {
+    table-layout: fixed;
+    border: 2px solid black;
+    border-radius: 1%;
+    background: #F0EEEE;
+    font-family: 'Open Sans', sans-serif;
+}
+.header {
+    background: black;
+}
+.header-data {
     text-align: center;
+    text-decoration: none;
 }
 
-th {
-    text-align: center;
-    color: #ffffff;
-    width: 160px;
-    padding: 10px;
+.weeks{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-td {
-    text-align: center;
-    padding: 10px;
-    color: #ffffff;
-
+.sched-head {
+    background: #831919;
+}
+.sched-head:first-child{
+    border-top-left-radius: 10px;
 }
 
-tr:nth-child(even){
-    background-color: #232b2b;
+.sched-head:last-child {
+    border-top-right-radius: 10px;
 }
-

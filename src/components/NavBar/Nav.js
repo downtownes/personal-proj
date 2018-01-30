@@ -10,11 +10,11 @@ export default class Nav extends Component {
                     <div className="nav-img">
                         <img src="http://via.placeholder.com/250x90" />
                     </div>
-                    <Link to="/" className="links"><h4>Home</h4  ></Link>
-                    <Link to="/workouts" className="links"><h4 >Workouts</h4></Link>
-                    <Link to="/about" className="links"><h4>About</h4></Link>
+                    <div><Link to="/" className="links"><h4>Home</h4  ></Link></div>
+                    <div><Link to="/workouts" className="links"><h4 >Workouts</h4></Link></div>
+                    <div><Link to="/about" className="links"><h4>About</h4></Link></div>
                     <div className="login-link">
-                    <a href={process.env.REACT_APP_LOGIN}>
+                    <a className="login" href={process.env.REACT_APP_LOGIN}>
                         <h4>Login</h4>
                     </a>
                     </div>

@@ -15,5 +15,14 @@ module.exports = {
             console.log(req.params.id)
             res.status(200).send(week);
         })
+    },
+
+    getBurnWeek: (req, res, next) => {
+        const db = req.app.get('db');
+
+        db.get_burn_week(req.params.id).then(burnWeek => {
+            console.log(req.params.id)
+            res.status(200).send(burnWeek);
+        })
     }
 }

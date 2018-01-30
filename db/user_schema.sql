@@ -1,7 +1,7 @@
 CREATE TABLE users
 (id SERIAL PRIMARY KEY,
-first_name VARCHAR(40),
-last_name VARCHAR(40),
-email TEXT,
-password VARCHAR(20),
+username VARCHAR(180),
+email VARCHAR(180),
+profile_pic TEXT,
+auth_id TEXT,
 workout_id INTEGER)

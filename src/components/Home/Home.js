@@ -7,7 +7,9 @@ export default class Home extends Component {
     render() {
         return (
             <div className="home">
+            <div className="title-div">
                 <h1>5' GIANT LIFTING</h1>
+                </div>
                 <div className="middle">
                     <div className="middle-icon">
                     </div>
