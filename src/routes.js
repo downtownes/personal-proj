@@ -7,7 +7,8 @@ import MuscleWorkout from './components/MuscleWorkout/MuscleWorkout';
 import BurnFat from './components/BurnFat/BurnFat';
 import Week from './components/Week/Week';
 import Profile from './components/Profile/Profile';
-import BurnWeek from './components/BurnWeek/BurnWeek'
+import BurnWeek from './components/BurnWeek/BurnWeek';
+import AdminProfile from './components/AdminProfile/AdminProfile';
 
 
 export default (
@@ -21,9 +22,10 @@ export default (
                 </Switch>
             </Workouts>
         )} />
-        <Route path="/week/:workout_id" component={Week}/>
-        <Route path="/burnweek/:workout_id" component={BurnWeek}/>
-        <Route path="/profile" component={Profile}/>
+        <Route path="/week/:workout_id" component={Week} />
+        <Route path="/burnweek/:workout_id" component={BurnWeek} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/adminprofile" component={AdminProfile} />
         <Route path="/about" component={About} />
     </Switch>
 )

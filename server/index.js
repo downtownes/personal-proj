@@ -29,19 +29,20 @@ passport.use(new Auth0Strategy({
     callbackURL: process.env.CALLBACK_URL,
     scope: 'openid profile'
 }, function (accessToken, refreshToken, extraParams, profile, done) {
-    let { displayName, user_id, email, picture } = profile
+    let { displayName, user_id, picture, is_admin } = profile
     const db = app.get('db'); //this is making the database connection
     console.log(profile);
     db.find_user(user_id).then(function (users) {
-        console.log(users);
+        // console.log(users);
         if (!users[0]) {
             db.create_user(
                 [displayName,
-                    email,
                     picture,
+                    is_admin,
                     user_id
                 ]).then(user => {
-                    return done(null, user.id)
+                    console.log('user', user)
+                    return done(null, user[0].id)
                 })
         } else {
             return done(null, users[0].id)
@@ -50,6 +51,7 @@ passport.use(new Auth0Strategy({
 }))
 
 passport.serializeUser((id, done) => {
+    console.log('serialize', id)
     done(null, id);
 })
 passport.deserializeUser((id, done) => {
@@ -67,13 +69,23 @@ app.get('/auth/callback', passport.authenticate('auth0', {
 }))
 
 app.get('/auth/me', (req, res) => {
-    console.log(req.user)
+    console.log('req.user', req.user)
     if (!req.user) {
-        req.status(404).send('User not found');
+        res.status(404).send('User not found');
     } else {
         res.status(200).send(req.user);
     }
 })
+
+app.get('/auth/authorized', (req, res) => {
+    if(req.user.is_admin != true) {
+        return res.status(403).send(false)
+    } else { 
+        return res.status(200).send(req.user);
+    }
+})
+
+
 
 app.get('/auth/logout', function (req, res) {
     req.logOut();

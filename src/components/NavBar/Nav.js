@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 import routes from '../../routes';
+import { getUserInfo } from '../../ducks/users';
 import './Nav.css';
 export default class Nav extends Component {
+
     render() {
         return (
             <div>
