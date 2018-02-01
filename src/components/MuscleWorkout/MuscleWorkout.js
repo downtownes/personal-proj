@@ -14,8 +14,6 @@ export default class MuscleWorkout extends Component {
 
     componentDidMount() {
         axios.get('/api/muscle').then(res => {
-            console.log(this.props);
-            console.log(res.data);
             this.setState({
                 workout: res.data,
             })

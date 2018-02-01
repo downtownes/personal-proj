@@ -18,7 +18,6 @@ class Profile extends Component {
         this.props.getUserInfo();
     }
     render() {
-        console.log(this.props);
         const user = this.props.user;
         return (
             <div className="profile">
@@ -35,7 +34,6 @@ class Profile extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state)
     return {
         user: state.user
     }

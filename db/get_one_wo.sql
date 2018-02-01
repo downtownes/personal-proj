@@ -1,0 +1,1 @@
+SELECT id, wo_details FROM week;

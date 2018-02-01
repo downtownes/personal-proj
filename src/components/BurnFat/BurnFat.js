@@ -53,7 +53,6 @@ export default class BurnFat extends Component {
                     </thead>
                     <tbody className="sched-body">
                         {loseWeight}
-                        {console.log(this.state.week)}
                     </tbody>
                 </table>
             </div>

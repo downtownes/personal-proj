@@ -24,5 +24,26 @@ module.exports = {
             console.log(req.params.id)
             res.status(200).send(burnWeek);
         })
-    }
+    },
+
+    getOneWo: (req, res, next) => {
+        const db = req.app.get('db');
+        console.log('req.params.id', req.params.id);
+        const { params } = req;
+
+        db.get_one_wo([params.id]).then(week => {
+            console.log(week);
+            res.status(200).send(week);
+        })
+    },
+
+    updateWo: (req, res, next) => {
+        const db = req.app.get('db');
+        const { params, query } = req
+        console.log(req.params)
+
+        db.update_wo([params.id, query.wo_details]).then(id => {
+            res.status(200).send(id);
+        })
+    },
 }

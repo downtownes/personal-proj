@@ -31,9 +31,7 @@ passport.use(new Auth0Strategy({
 }, function (accessToken, refreshToken, extraParams, profile, done) {
     let { displayName, user_id, picture, is_admin } = profile
     const db = app.get('db'); //this is making the database connection
-    console.log(profile);
     db.find_user(user_id).then(function (users) {
-        // console.log(users);
         if (!users[0]) {
             db.create_user(
                 [displayName,
@@ -41,7 +39,6 @@ passport.use(new Auth0Strategy({
                     is_admin,
                     user_id
                 ]).then(user => {
-                    console.log('user', user)
                     return done(null, user[0].id)
                 })
         } else {
@@ -51,13 +48,10 @@ passport.use(new Auth0Strategy({
 }))
 
 passport.serializeUser((id, done) => {
-    console.log('serialize', id)
     done(null, id);
 })
 passport.deserializeUser((id, done) => {
-    console.log('deserialize', id);
     app.get('db').find_session_user([id]).then(function (user) {
-        console.log('user')
         return done(null, user[0]) //this returns not only the id, but the object of all the user's information
     })
 })
@@ -69,7 +63,6 @@ app.get('/auth/callback', passport.authenticate('auth0', {
 }))
 
 app.get('/auth/me', (req, res) => {
-    console.log('req.user', req.user)
     if (!req.user) {
         res.status(404).send('User not found');
     } else {
@@ -95,7 +88,9 @@ app.get('/auth/logout', function (req, res) {
 app.get('/api/muscle', controller.getWorkout);
 app.get('/api/fatburn', controller.getWorkout);
 app.get('/api/week', controller.getWeek);
-app.get('/api/burnweek', controller.getBurnWeek)
+app.get('/api/burnweek', controller.getBurnWeek);
+app.get('/api/getwos', controller.getWeek);
+app.put('/api/updatewo/:id', controller.updateWo);
 
 
 

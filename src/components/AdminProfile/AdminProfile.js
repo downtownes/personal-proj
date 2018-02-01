@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getUserInfo } from '../../ducks/users';
 import '../Profile/Profile.css';
 
@@ -11,7 +12,7 @@ class AdminProfile extends Component {
         this.props.getUserInfo();
     }
     render() {
-        console.log(this.props);
+
         const user = this.props.user;
         return (
             <div className="admin-profile">
@@ -22,7 +23,7 @@ class AdminProfile extends Component {
                     <p>ID: {user ? user.auth_id : null}</p>
                     <div className="buttons">
                     <a href='http://localhost:3000/auth/logout'><button>Log Out</button></a>
-                    <button>Edit Workout</button>
+                    <Link to="/editwo"><button>Edit Workout</button></Link>
                     </div>
                 </div>
             </div>
@@ -31,7 +32,7 @@ class AdminProfile extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state)
+
     return {
         user: state.user
     }

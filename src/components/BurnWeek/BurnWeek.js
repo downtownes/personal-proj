@@ -13,7 +13,6 @@ export default class Week extends Component {
 
     componentDidMount() {
         axios.get('/api/burnweek').then(res => {
-            console.log(res.data)
             this.setState({
                 week: res.data
             })
@@ -27,7 +26,6 @@ export default class Week extends Component {
         let lift;
         let weekSplit = this.state.week.map( (val, i) => {
             split = val.wo_details.split(',');
-            console.log(split);
             return <tr>
                 <td>{val.wo_name}</td>
                 <td>{split.map((wo) => {

@@ -9,6 +9,7 @@ import Week from './components/Week/Week';
 import Profile from './components/Profile/Profile';
 import BurnWeek from './components/BurnWeek/BurnWeek';
 import AdminProfile from './components/AdminProfile/AdminProfile';
+import EditWorkout from './components/EditWorkout/EditWorkout';
 
 
 export default (
@@ -26,6 +27,7 @@ export default (
         <Route path="/burnweek/:workout_id" component={BurnWeek} />
         <Route path="/profile" component={Profile} />
         <Route path="/adminprofile" component={AdminProfile} />
+        <Route path="/editwo" component={EditWorkout} />
         <Route path="/about" component={About} />
     </Switch>
 )
