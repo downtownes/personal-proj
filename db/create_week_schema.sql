@@ -1,5 +1,0 @@
-CREATE TABLE week
-(id SERIAL PRIMARY KEY,
-wo_name VARCHAR(120),
-wo_details VARCHAR(400)
-)

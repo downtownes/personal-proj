@@ -87,10 +87,15 @@ app.get('/auth/logout', function (req, res) {
 
 app.get('/api/muscle', controller.getWorkout);
 app.get('/api/fatburn', controller.getWorkout);
-app.get('/api/week', controller.getWeek);
-app.get('/api/burnweek', controller.getBurnWeek);
-app.get('/api/getwos', controller.getWeek);
-app.put('/api/updatewo/:id', controller.updateWo);
+app.get('/api/active_rest', controller.getActive);
+app.get('/api/active_rest_b', controller.getActiveB);
+app.get('/api/chest_back', controller.getChestBack);
+app.get('/api/chest_back_b', controller.getChestBackB);
+app.get('/api/legs_tris', controller.getTri);
+app.get('/api/legs_tris_b', controller.getTriB);
+app.get('/api/legs_bis', controller.getLegs);
+app.get('/api/legs_bis_b', controller.getLegsB);
+app.post('/api/lift', controller.addLift);
 
 
 

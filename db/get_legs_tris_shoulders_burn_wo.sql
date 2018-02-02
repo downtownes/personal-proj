@@ -1,0 +1,1 @@
+SELECT id, workout FROM legs_tris_shoulders_burn;

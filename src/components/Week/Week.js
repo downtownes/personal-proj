@@ -6,43 +6,45 @@ export default class Week extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            week: [],
-            weeksDisp: ''
+            activeRest: [],
+            legsBis: [],
+            chestBack: [],
+            legsTris: []
         }
     }
 
     componentDidMount() {
-        axios.get('/api/week').then(res => {
+        axios.all([axios.get('/api/active_rest'), axios.get('/api/chest_back'), axios.get('/api/legs_bis'), axios.get('/api/legs_tris')]).then(res => {
             this.setState({
-                week: res.data
+                activeRest: res[0].data,
+                chestBack: res[1].data,
+                legsBis: res[2].data,
+                legsTris: res[3].data
             })
         })
     }
 
 
     render() {
-        let split;
-        let name;
-        let lift;
-        let weekSplit = this.state.week.map( (val, i) => {
-            split = val.wo_details.split(',');
-            return <tr>
-                <td>{val.wo_name}</td>
-                <td>{split.map((wo) => {
-                    return <div className="pic-div">{wo}<h4>What is this?</h4></div>
-                })}<div>
-                    <div></div>
-                    </div>
-                    </td>
-            </tr>
-        });
+        // let weekSplit = this.state.week.map( (val, i) => {
+        //     split = val.wo_details.split(',');
+        //     return <tr>
+        //         <td>{val.wo_name}</td>
+        //         <td>{split.map((wo) => {
+        //             return <div className="pic-div">{wo}<h4>What is this?</h4></div>
+        //         })}<div>
+        //             <div></div>
+        //             </div>
+        //             </td>
+        //     </tr>
+        // });
         return (
             <div className="week">
                 <table className="week-table">
                     <tbody>
                             <th className="day-wo">Day</th>
                             <th className="day-wo">Workout</th>
-                        {weekSplit}
+                        {/* {weekSplit} */}
                     </tbody>
                 </table>
             </div>

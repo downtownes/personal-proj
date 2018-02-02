@@ -1,0 +1,1 @@
+SELECT id, workout FROM legs_bis_burn;

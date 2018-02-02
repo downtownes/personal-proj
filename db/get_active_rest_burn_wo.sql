@@ -1,0 +1,1 @@
+SELECT id, workout FROM active_rest_burn;
