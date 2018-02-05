@@ -11,9 +11,8 @@ module.exports = {
     getActive: (req, res, next) => {
         const db = req.app.get('db');
         console.log('req.params.id', req.params.id);
-        const { params } = req;
 
-        db.get_one_wo([params.id]).then(week => {
+        db.get_active_wo().then(week => {
             console.log(week);
             res.status(200).send(week);
         })
@@ -31,7 +30,7 @@ module.exports = {
         const db = req.app.get('db');
 
         db.get_chest_back_wo().then(chest => {
-            res.status(200).then(chest);
+            res.status(200).send(chest);
         })
     },
 
@@ -39,7 +38,7 @@ module.exports = {
         const db = req.app.get('db');
 
         db.get_chest_back_burn_wo().then(chestB => {
-            res.status(200).then(chestB);
+            res.status(200).send(chestB);
         })
     },
 
@@ -55,7 +54,7 @@ module.exports = {
         const db = req.app.get('db');
 
         db.get_legs_bis_burn_wo().then(legsB => {
-            res.status(200).then(legsB);
+            res.status(200).send(legsB);
         })
     },
 
@@ -75,22 +74,68 @@ module.exports = {
         })
     },
 
-    addLift: (req, res, next) => {
+    addActive: (req, res, next) => {
         const db = req.app.get('db');
 
-        db.add_lift([req.body.name, req.body.workout]).then(result => {
-            console.log('req.body.name', req.body.name);
+        db.add_active_lift([req.body.active]).then(result => {
+            console.log('req.body.active', req.body.active);
             res.status(200).send(result)
         })
     },
 
-    updateWo: (req, res, next) => {
+    addChest: (req, res, next) => {
         const db = req.app.get('db');
-        const { params, query } = req
-        console.log(req.params)
 
-        db.update_wo([params.id, query.wo_details]).then(id => {
-            res.status(200).send(id);
+        db.add_chest_lift([req.body.active]).then(chest => {
+            res.status(200).send(chest);
         })
     },
+
+    addBi: (req, res, next) => {
+        const db = req.app.get('db');
+
+        db.add_leg_bi([req.body.active]).then(bi => {
+            res.status(200).send(bi);
+        })
+    },
+
+    addTri: (req, res, next) => {
+        const db = req.app.get('db');
+
+        db.add_leg_tri([req.body.active]).then(tri => {
+            res.status(200).send(tri);
+        })
+    },
+
+    updateAct: (req, res, next) => {
+        const db = req.app.get('db');
+
+        db.update_wo([req.body.id, req.body.updateBody]).then(upAct => {
+            res.status(200).send(upAct);
+        })
+    },
+
+    updateBi: (req, res, next) => {
+        const db = req.app.get('db');
+
+        db.update_bi([req.body.id, req.body.updateBody]).then(upBi => {
+            res.status(200).send(upBi);
+        })
+    },
+
+    updateChest: (req, res, next) => {
+        const db = req.app.get('db');
+
+        db.update_chest([req.body.id, req.body.updateBody]).then(upChest => {
+            res.status(200).send(upChest);
+        })
+    },
+
+    updateTri: (req, res, next) => {
+        const db = req.app.get('db');
+
+        db.update_tri([req.body.id, req.body.updateBody]).then(upTri => {
+            res.status(200).send(upTri);
+        })
+    }
 }

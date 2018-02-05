@@ -95,7 +95,14 @@ app.get('/api/legs_tris', controller.getTri);
 app.get('/api/legs_tris_b', controller.getTriB);
 app.get('/api/legs_bis', controller.getLegs);
 app.get('/api/legs_bis_b', controller.getLegsB);
-app.post('/api/lift', controller.addLift);
+app.put('/api/lift1', controller.addActive);
+app.put('/api/lift2', controller.addChest);
+app.put('/api/lift3', controller.addBi);
+app.put('/api/lift4', controller.addTri);
+app.post('/api/updateAct', controller.updateAct);
+app.post('/api/updateBi', controller.updateBi);
+app.post('/api/updateChest', controller.updateChest);
+app.post('/api/updateTri', controller.updateTri);
 
 
 
