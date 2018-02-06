@@ -1,1 +1,1 @@
-SELECT workout FROM active_rest;
+SELECT id, workout FROM active_rest;

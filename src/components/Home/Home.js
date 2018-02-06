@@ -19,9 +19,9 @@ class Home extends Component {
                     <h1>5' GIANT LIFTING</h1>
                 </div>
                 <div className="middle">
-                    <div className="middle-icon">
+                    <div className="middle-icon1">
                     </div>
-                    <Link to={!user.username ? "/" : "/profile"}><div className="middle-icon">
+                    <Link to={!user.username ? "/" : "/profile"} className="profile-link"><div className="middle-icon2">
                     </div></Link>
                 </div>
 

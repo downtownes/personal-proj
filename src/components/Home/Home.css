@@ -3,7 +3,7 @@
 
 .home {
     display: block;
-    background: #f0eeee;
+    background: #ffffff;
 }
 
 .title-div {
@@ -25,11 +25,22 @@ h1 {
     align-content: center;
 }
 
-.middle-icon {
+.middle-icon1 {
     width: 260px;
     height: 260px;
-    background: #ffffff;
+    background: #a8a4a4;
     box-shadow: 5px 5px 5px 0 #831919;
+}
+
+.middle-icon2 {
+    width: 260px;
+    height: 260px;
+    background: #a8a4a4;
+    background-image: url("https://ludedinc.com/includes/images/default-profile.png")
+}
+
+.middle-icon2:hover {
+    box-shadow: 2px 2px 2px 2px #831919;
 }
 
 p {
@@ -37,3 +48,7 @@ p {
     color: #232b2b;
     text-align: center;
 }
+
+/* .profile-link {
+    background-image: url("http://www.clker.com/cliparts/5/7/4/8/13099629981030824019profile.svg.hi.png")
+} */

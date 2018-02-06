@@ -12,7 +12,7 @@ module.exports = {
         const db = req.app.get('db');
         console.log('req.params.id', req.params.id);
 
-        db.get_active_wo().then(week => {
+        db.get_active_wo(req.params.id).then(week => {
             console.log(week);
             res.status(200).send(week);
         })
@@ -21,7 +21,7 @@ module.exports = {
     getActiveB: (req, res, next) => {
         const db = req.app.get('db');
 
-        db.get_active_wo_rest_burn_wo().then(activeB => {
+        db.get_active_wo_rest_burn_wo(req.params.id).then(activeB => {
             res.status(200).send(activeB)
         })
     },
@@ -29,7 +29,7 @@ module.exports = {
     getChestBack: (req, res, next) => {
         const db = req.app.get('db');
 
-        db.get_chest_back_wo().then(chest => {
+        db.get_chest_back_wo(req.params.id).then(chest => {
             res.status(200).send(chest);
         })
     },
@@ -110,7 +110,7 @@ module.exports = {
     updateAct: (req, res, next) => {
         const db = req.app.get('db');
 
-        db.update_wo([req.body.id, req.body.updateBody]).then(upAct => {
+        db.update_active([req.body.id, req.body.updateBody]).then(upAct => {
             res.status(200).send(upAct);
         })
     },
@@ -127,6 +127,7 @@ module.exports = {
         const db = req.app.get('db');
 
         db.update_chest([req.body.id, req.body.updateBody]).then(upChest => {
+            console.log('req.body.id', req.body.id)
             res.status(200).send(upChest);
         })
     },

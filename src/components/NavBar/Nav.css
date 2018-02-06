@@ -17,6 +17,10 @@
     font-size: 24px;
 }
 
+.link-text:hover {
+    text-decoration: underline;
+}
+
 .login-link {
     margin-right: 100px;
     margin-left: 100px;

@@ -16,17 +16,17 @@ export default class EditWorkout extends Component {
             dropdown: null, //hidden on select value
             tableName: '',
             lift: '',
-            restLifts: '',
             dropdown2: [],
             liftUpdate: '',
-            dropdownID: ''
+            selectedId: ''
         }
         this.selectChange = this.selectChange.bind(this);
         this.textChange = this.textChange.bind(this);
         this.showActiveRest = this.showActiveRest.bind(this);
         this.updateWorkoutText = this.updateWorkoutText.bind(this);
-        this.updateWorkout = this.updateWorkout.bind(this);
+        // this.updateWorkout = this.updateWorkout.bind(this);
         this.submitChanges = this.submitChanges.bind(this);
+        this.addLift = this.addLift.bind(this);
     }
 
     componentDidMount() {
@@ -99,42 +99,34 @@ export default class EditWorkout extends Component {
     };
 
     showActiveRest(e) {
-        
-        let value = e.target.value
+        let value = this.state.selectedId
+        this.setState({selectedId: e.target.value})
         switch (value) {
             case 'activeRest':
-            axios.get('/api/active_rest').then(res => {
                 this.setState({
-                    dropdown2: res.data,
-                    dropdownID: res.data.id
-                })
+                    dropdown2: this.state.activeRest,
             })
             break;
             case 'legsBis': 
-            axios.get('/api/legs_bis').then(res => {
                 this.setState({
-                    dropdown2: res.data,
+                    dropdown2: this.state.legsBis,
                 })
-            })
             break;
             case 'chestBack':
-            axios.get('/api/chest_back').then(res => {
                 this.setState({
-                    dropdown2: res.data
-                })
+                    dropdown2: this.state.chestBack,
             })
             break;
             case 'legsTri':
-            axios.get('/api/legs_tris').then(res => {
                 this.setState({
-                    dropdown2: res.data
-                })
+                    dropdown2: this.state.legsTri,
             })
         }
         this.setState({
             dropdown: true
         })
         console.log(this.state.dropdown2);
+        console.log(this.state.dropdownID)
     };
 
     updateWorkoutText(e) {
@@ -145,13 +137,13 @@ export default class EditWorkout extends Component {
 
     updateWorkout(e) {
         console.log(e.target.value);
-        this.setState({dropdownID: this.state.dropdown2.id});
+        this.setState({dropdownID: e.target.value});
     }
 
     submitChanges() {
-        let id = this.state.dropdown.id
+        let id = this.state.dropdown2.id
         let updateBody = this.state.liftUpdate;
-        let whichWorkout = this.state.dropdown2;
+        let whichWorkout = this.state.selectedId;
         console.log(this.state.dropdown2)
          switch (whichWorkout) {
              case 'activeRest': 
@@ -201,7 +193,7 @@ export default class EditWorkout extends Component {
                         </form>
                     </div>
                     <div hidden={this.state.modify == null || this.state.create == true ? true : false} className="create-new">
-                        <form className="test" onSubmit={ () => this.submitChanges}>
+                        <form className="test" onSubmit={ (e) => this.submitChanges(e)}>
                             <select onChange={this.showActiveRest} value={this.state.dropdown2}>
                                 <option className="add-new-opt" selected="Select">Select</option>
                                 <option className="add-new-opt" label="Active Rest" value="activeRest"></option>
@@ -209,7 +201,7 @@ export default class EditWorkout extends Component {
                                 <option className="add-new-opt" label="Chest and Back" value="chestBack"></option>
                                 <option className="add-new-opt" label="Legs, Triceps, Shoulders" value="legsTri"></option>
                             </select>
-                            <select hidden={ this.state.dropdown === null ? true : false} onChange={this.updateWorkout} value={this.state.dropdownID}>
+                            <select hidden={ this.state.dropdown === null ? true : false} value={this.state.dropdownID}>
                                 <option selected="Select">Select</option>
                                 {mappedWo}
                             </select>
